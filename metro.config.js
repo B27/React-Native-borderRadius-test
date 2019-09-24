@@ -4,8 +4,12 @@
  *
  * @format
  */
+const blacklist = require('metro-config/src/defaults/blacklist');
 
 module.exports = {
+  resolver: {
+    blacklistRE: blacklist([/android\/.*/]),
+  },
   transformer: {
     getTransformOptions: async () => ({
       transform: {
@@ -13,5 +17,8 @@ module.exports = {
         inlineRequires: false,
       },
     }),
+  },
+  server: {
+    useGlobalHotkey: true,
   },
 };
